@@ -1,0 +1,13 @@
+##################################################################
+# VS Code with REST Client extension is needed to use this file.
+# Download at: https://aka.ms/vscode/rest-client
+##################################################################
+
+@api_host = http://localhost:3000
+
+
+GET {{api_host}}/test/async-iterator
+
+###
+
+GET {{api_host}}/test/single-events
