@@ -17,6 +17,7 @@ const test: FastifyPluginAsync = async (fastify, options): Promise<void> => {
       await sleep(100);
       reply.sse({id: String(i), data: "Some message"});
     }
+    reply.sseContext.source.end();
 
     request.socket.on("close", () => {
       console.log("connection closed");
@@ -29,7 +30,8 @@ const test: FastifyPluginAsync = async (fastify, options): Promise<void> => {
       await sleep(100);
       reply.sse({ data: "Some message" });
     }
-    reply.sse({ event: "close" });
+    // reply.sse((async function * source (){})());
+    reply.sseContext.source.end();
 
     request.socket.on("close", () => {
       console.log("connection closed");
